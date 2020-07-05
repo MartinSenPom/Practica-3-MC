@@ -1,0 +1,75 @@
+// NOMBRE Y APELLIDOS: MARTÍN SENDE POMBO
+// CURSO: 2019/20   ESTUDIOS: GRADO DE BIOTECNOLOGÍA
+
+#include <stdio.h>
+#include <locale.h>
+void main()
+{
+    // Permite emplear los carateres propios del español incluidos en el alfabeto ASCII extendido
+    setlocale(LC_ALL, "spanish");
+
+    /* Imprime en pantalla el nombre de la práctica y inicializa la varible cuyo valor condiciona la ejecución del bucle
+    "do ... while" que aparece a continuación */
+    printf("\n\n PRÁCTICA nº 3");
+    char caracter;
+
+    // Permite visualizar y emplear el menú de este programa
+    do {
+        // Presenta en pantalla el título y opciones del menú
+        printf("\n\n ------------------------------- MENÚ -------------------------------------------------------");
+        printf("\n\n 1: Suma de nºs comprendidos entre el 1 y el 500, ambos incluidos");
+        printf("\n 2: Media de los nºs impares comprendidos entre el 1 y el 255, incluido el 1, excluido el 255");
+        printf("\n 3: Producto de los nºs pares comprendidos entre el 10 y el 21, ambos excluidos");
+        printf("\n\n Introduzca una opción entre 1 y 3: ");
+
+        // Estas 2 instrucciones permiten elegir una de las 3 opciones disponibles
+        int eleccion;
+        scanf("%d", &eleccion);
+
+        // Esta sentencia de selección "switch" ejecuta la opción elegida
+        switch (eleccion){
+            // Realiza la suma de todos los números comprendidos entre el 1 y el 500, ambos incluidos
+            case 1:{
+                unsigned int sumando, resultado1;
+                for(sumando = 2, resultado1 = 1; sumando <= 500; sumando++){
+                    resultado1 = resultado1 + sumando;
+                }
+                printf("\n El resultado de la suma es: %d", resultado1);
+                printf("\n");
+                break;
+            }
+            /* Calcula la media aritmética de todos los números impares comprendidos entre el 1 y el 255,
+            incluido el primero pero no el segundo */
+            case 2:{
+                unsigned int numero; float resultado2;
+                for(numero = 1, resultado2 = 0; numero < 255; numero = numero + 2){
+                    resultado2 = resultado2 + numero;
+                }
+                resultado2 = resultado2 / (254 / 2);
+                printf("\n El resultado de la media es: %.3f", resultado2);
+                printf("\n");
+                break;
+            }
+            // Lleva a cabo el producto de los todos los números pares comprendidos entre el 10 y el 21, ambos excluidos
+            case 3:{
+                unsigned int factor, resultado3;
+                for(factor = 12, resultado3 = 1; factor < 21; factor = factor + 2){
+                    resultado3 = resultado3 * factor;
+                }
+                printf("\n El resultado del producto es: %d", resultado3);
+                printf("\n");
+                break;
+            }
+            /* Avisa al usuario de que, en lugar de introducir en el búfer el número correspondiente a alguna de las 3 opciones,
+            ha escrito otro distinto o uno de los carácteres 'n' y 'N' */
+            default:{
+                printf("Opción no válida");
+            }
+        }
+
+        // Pregunta al usuario si quiere finalizar la ejecución del programa y recoge su respuesta escrita en el "buffer"
+        printf("\n ¿Desea finalizar la ejecución del programa? En caso negativo, introduzca n o N: ");
+        scanf(" %c", &caracter);
+    } while ((caracter == 78) || (caracter == 110));
+
+}
